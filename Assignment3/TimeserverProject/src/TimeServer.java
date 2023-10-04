@@ -1,3 +1,6 @@
+import java.math.BigInteger;
+import java.util.Arrays;
+
 import rf.RF;
 
 /**
@@ -12,8 +15,19 @@ public class TimeServer
     {
     	
     	String macString = args[0];
-    	int mac = Integer.parseInt(macString);
+    	short mac = Short.parseShort(macString);
     	System.out.println(mac);
+    	macString = Integer.toBinaryString(mac);
+    	System.out.println(macString);
+    	
+    	byte[] bval = new BigInteger(macString, 2).toByteArray();
+    	System.out.println(Arrays.toString(bval));
+    	
+    	//System.out.println(10001100 & 0xFF);
+    	
+    	
+    	
+    	//SHOULD I BE USING SHIFTING AND MASKING TO MAKE BYTE ARRAY?
     	
     	
     	// Create an instance of the RF layer. See documentation for
