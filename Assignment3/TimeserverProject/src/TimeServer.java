@@ -23,11 +23,11 @@ public class TimeServer
     	bytes[0] = (byte) (mac >> 8);
     	bytes[1] = (byte) (mac >> 0);
     	
-    	System.out.println(byte1 & 0xff);
-    	System.out.println(byte2 & 0xff);
+    	System.out.println(bytes[0] & 0xff);
+    	System.out.println(bytes[1] & 0xff);
     	
     	//Try to convert back
-    	int newMac = (int) (bytes[0] << 8) | bytes[1] << 0;
+    	int newMac = (int) (bytes[0] << 8) + bytes[1] << 0;
     	
     	System.out.println(newMac);
     	
