@@ -1,4 +1,3 @@
-import java.math.BigInteger;
 import java.util.Arrays;
 
 import rf.RF;
@@ -17,13 +16,27 @@ public class TimeServer
     	String macString = args[0];
     	short mac = Short.parseShort(macString);
     	System.out.println(mac);
-    	macString = Integer.toBinaryString(mac);
-    	System.out.println(macString);
     	
-    	byte[] bval = new BigInteger(macString, 2).toByteArray();
-    	System.out.println(Arrays.toString(bval));
+    	byte[] bytes = new byte[2];
     	
-    	//System.out.println(10001100 & 0xFF);
+    	//convert to bytes
+    	bytes[0] = (byte) (mac >> 8);
+    	bytes[1] = (byte) (mac >> 0);
+    	
+    	System.out.println(byte1 & 0xff);
+    	System.out.println(byte2 & 0xff);
+    	
+    	//Try to convert back
+    	int newMac = (int) (bytes[0] << 8) | bytes[1] << 0;
+    	
+    	System.out.println(newMac);
+    	
+    	
+    	
+  
+    	
+    	
+    	
     	
     	
     	
