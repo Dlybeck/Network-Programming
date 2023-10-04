@@ -10,26 +10,37 @@ public class TimeServer
 {
     public static void main(String[] args)
     {
+    	
+    	String macString = args[0];
+    	int mac = Integer.parseInt(macString);
+    	System.out.println(mac);
+    	
+    	
     	// Create an instance of the RF layer. See documentation for
     	// info on parameters, but they're null here since we don't need
     	// to override any of its default settings.
-        RF theRF = new RF(null, null);  
+        //RF theRF = new RF(null, null);  
         
         // Put together an array of bytes to do a test send
-        byte[] buf = new byte[3];
-        buf[0] = 10;
-        buf[1] = 20;
-        buf[2] = 5;
+        //byte[] buf = new byte[3];
+        //buf[0] = 10;
+        //buf[1] = 20;
+        //buf[2] = 5;
         
         // Try to send it and see if it went out.
-        int bytesSent = theRF.transmit(buf);
-        if (bytesSent != buf.length) {
-            System.err.println("Only sent "+bytesSent+" bytes of data!");
-        } 
-        else {
-            System.out.println("Yay!  We sent the entire packet!");
-        }
+        //int bytesSent = theRF.transmit(buf);
+        //if (bytesSent != buf.length) {
+          //  System.err.println("Only sent "+bytesSent+" bytes of data!");
+        //} 
+        //else {
+          //  System.out.println("Yay!  We sent the entire packet!");
+        //}
             
-        System.exit(0);  // Make sure all threads die
+        //System.exit(0);  // Make sure all threads die
     }
 }
+
+
+
+
+
