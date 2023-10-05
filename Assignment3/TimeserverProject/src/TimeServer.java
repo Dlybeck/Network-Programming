@@ -1,3 +1,4 @@
+import java.util.Random;
 import rf.RF;
 
 /**
@@ -15,12 +16,23 @@ public class TimeServer
     
     public static void main(String[] args)
     {
-        String macString = args[0];
-    	int mac = Integer.parseInt(macString);
-    	long time = theRF.clock();
-    	System.out.println(mac);
+    	int mac;
+    	Random rand = new Random();
+    	if (args.length > 0) {
+    		String macString = args[0];
+    		mac = Integer.parseInt(macString);
+    		System.out.println("Using MAC address: "+mac);
+    	} 
+    	else {
+    		mac = (int) rand.nextLong(65534);
+    		System.out.println("Using random MAC address: "+mac);
+    	}
+    	
+    	String hex = Integer.toHexString(mac);
+    	System.out.println("(That's 0x"+hex+" in hex)");
     	
     	new Thread(new Sender(mac)).start(); 
+    	new Thread(new Watch()).start(); 
     	
         
         // Try to send it and see if it went out.
