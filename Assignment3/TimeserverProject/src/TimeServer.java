@@ -8,42 +8,20 @@ import rf.RF;
  */
 public class TimeServer 
 {
+	// Create an instance of the RF layer. See documentation for
+	// info on parameters, but they're null here since we don't need
+	// to override any of its default settings.
+    public static RF theRF = new RF(null, null); 
+    
     public static void main(String[] args)
     {
-    	String macString = args[0];
-    	short mac = Short.parseShort(macString);
+        String macString = args[0];
+    	int mac = Integer.parseInt(macString);
+    	long time = theRF.clock();
+    	System.out.println(mac);
     	
-    	RF myRF = new RF(null,null);
-    	long time = myRF.clock();
-    	System.out.println(time);
+    	new Thread(new Sender(mac)).start(); 
     	
-    	new Thread(new Sender(mac, time)).start();
-    	
-    	/*
-    	 //REFERENCE CODE FOR LATER
-    	 byte[] bytes = new byte[2];
-    	
-    	//convert to bytes
-    	bytes[0] = (byte) (mac >> 8);
-    	bytes[1] = (byte) (mac >> 0);
-    	
-    	System.out.println(bytes[0] & 0xff);
-    	System.out.println(bytes[1] & 0xff);
-    	
-    	//Try to convert back
-    	int newMac = (int) (bytes[0] << 8) + bytes[1] << 0;
-    	
-    	System.out.println(newMac);*/
-    	
-    	
-    	
-  
-    	
-    	
-    	// Create an instance of the RF layer. See documentation for
-    	// info on parameters, but they're null here since we don't need
-    	// to override any of its default settings.
-        //RF theRF = new RF(null, null);  
         
         // Try to send it and see if it went out.
         //int bytesSent = theRF.transmit(buf);
