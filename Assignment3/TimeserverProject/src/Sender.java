@@ -1,8 +1,11 @@
 import java.util.Random;
 import java.util.Arrays;
+import rf.RF;
+
 public class Sender implements Runnable{
 	
 	private int mac;
+	
     public Sender(int mac) {
     	this.mac = mac;
     }
@@ -27,6 +30,7 @@ public class Sender implements Runnable{
     		Random rand = new Random();
     		long sleep = rand.nextLong(7001);
     		
+    		//send packet and print errors
     		if(TimeServer.theRF.transmit(bytes) != 10) {
     			System.out.println("ERROR \n Sent incorrect number of bytes" );
     		};
@@ -35,6 +39,7 @@ public class Sender implements Runnable{
     		
     		System.out.println("Sent Packet: "+mac+" "+time+"  "+allBytes);
     		
+    		//Wait for next loop
     		try {
 				Thread.sleep(sleep);
 			} catch (InterruptedException e) {
