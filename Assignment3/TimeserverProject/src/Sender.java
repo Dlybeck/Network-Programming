@@ -27,7 +27,9 @@ public class Sender implements Runnable{
     		Random rand = new Random();
     		long sleep = rand.nextLong(7001);
     		
-    		TimeServer.theRF.transmit(bytes);
+    		if(TimeServer.theRF.transmit(bytes) != 10) {
+    			System.out.println("ERROR \n Sent incorrect number of bytes" );
+    		};
     		
     		String allBytes = toBytes(bytes);
     		

@@ -14,6 +14,10 @@ public class Watch implements Runnable{
 			String allBytes = toBytes(bytes);
 			System.out.println("Recieved "+allBytes);
 			
+			if(bytes.length != 10) {
+				System.out.println("ERROR \n recieved incorrect number of bytes" );
+			}
+			
 			//Convert mac to int
         	//mac = (int) (bytes[0] << 8) + (int) bytes[1] << 0;
 			mac = 0;
